@@ -106,7 +106,6 @@ class transaction extends uvm_sequence_item;
 	//do print methods overriding
 	function void do_print(uvm_printer printer);
 		//for write address channel
-//		$display("signals for write address channel");
 		printer.print_field("awid", this.awid, 4, UVM_DEC);
 		printer.print_field("awaddr", this.awaddr, 32, UVM_DEC);
 		printer.print_field("awlen", this.awlen, 4, UVM_DEC);
@@ -116,7 +115,6 @@ class transaction extends uvm_sequence_item;
 		printer.print_field("awready", this.awready, 1, UVM_DEC);
 		
 		//for write data channel
-//		$display("signals for write data channel");
 		printer.print_field("wid", this.wid, 4, UVM_DEC);
 		foreach(wdata[i])
 		printer.print_field($sformatf("wdata[%0d]",i), this.wdata[i], 32, UVM_DEC);
@@ -127,14 +125,12 @@ class transaction extends uvm_sequence_item;
 		printer.print_field("wlast", this.wlast, 4, UVM_DEC);
 		
 		//for write response channel
-//		$display("signals for write response channel");	
 		printer.print_field("bid", this.bid, 4, UVM_DEC);
 		printer.print_field("bresp", this.bresp, 2, UVM_DEC);
 		printer.print_field("bvalid", this.bvalid, 1, UVM_DEC);
 		printer.print_field("bready", this.bready, 1, UVM_DEC);
 			
 		//for read address channel
-//		$display("signals for read address channel");
 		printer.print_field("arid", this.arid, 4, UVM_DEC);
 		printer.print_field("araddr", this.araddr, 32, UVM_DEC);
 		printer.print_field("arlen", this.arlen, 4, UVM_DEC);
@@ -144,7 +140,6 @@ class transaction extends uvm_sequence_item;
 		printer.print_field("arready", this.arready, 1, UVM_DEC);
 	
 		//for read data channel
-//		$display("signals for read data channel"); 
 		printer.print_field("rid", this.rid, 4, UVM_DEC);
 		foreach(rdata[i])
 			printer.print_field($sformatf("rdata[%0d]",i), this.rdata[i], 32, UVM_DEC);
@@ -212,18 +207,6 @@ function void waddr_calc();
 				naddress[i] = start_address; 
 			end
 		end
-	
-		/*`uvm_info(get_type_name(),"from write address calculation",UVM_LOW)
-		$display("the Start_address = %0d", start_address);
-		$display("number_bytes = %0d", number_bytes);
-		$display("burst_length= %0d", burst_length);
-		$display("aligned_address=%0d", aligned_address);
-		$display("awburst=%0d",awburst);
-		$display("awsize=%0d",awsize);
-		foreach(naddress[i])
-			$display("naddress[%0d]=%0d",i, naddress[i]);
-		if(awburst == 2'b10)
-			$display("wrap_boundary= %0d", wrap_boundary);	*/
 	endfunction
 
 	function void raddr_calc();
@@ -284,19 +267,6 @@ function void waddr_calc();
 				rnaddress[i] = rstart_address; 
 			end
 		end
-/*
-		`uvm_info(get_type_name(),"from read address calculation",UVM_LOW)
-		$display("the read Start_address = %0d", rstart_address);
-		$display("read number_bytes = %0d", rnumber_bytes);
-		$display("read burst_length= %0d", rburst_length);
-		$display("read aligned_address=%0d", raligned_address);
-		$display("read arburst=%0d",arburst);
-		$display("read arsize=%0d",arsize);
-		foreach(rnaddress[i])
-			$display("read naddress[%0d]=%0d",i, rnaddress[i]);
-		if(arburst == 2'b10)
-			$display("read wrap_boundary= %0d", rwrap_boundary);	
-*/
 	endfunction
 		
 	
@@ -330,9 +300,6 @@ function void waddr_calc();
 				wstrobe[i][j] = 1;
 			end
 		end
-		
-/*		foreach(wstrobe[i])
-			$display("wstrobe[%0d] = %b", i ,wstrobe[i]);*/
 	endfunction
 
 
